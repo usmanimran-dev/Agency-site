@@ -1,0 +1,173 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+/* Tailwind Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties - Clay.global Style */
+:root {
+  /* Colors */
+  --color-dark-navy: #0A1628;
+  --color-royal-blue: #2563EB;
+  --color-mint: #10B981;
+  --color-mint-dark: #059669;
+  --color-card-bg: #FFFFFF;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #94A3B8;
+  --color-text-dark: #0F172A;
+
+  /* Spacing System - Clay.global inspired */
+  --spacing-card: 2rem;
+  --spacing-section: 6rem;
+  --spacing-grid-gap: 2rem;
+
+  /* Card Properties */
+  --card-radius: 1.5rem;
+  --card-radius-lg: 2rem;
+  --card-padding: 2rem;
+  --card-padding-lg: 3rem;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-card-hover: 0 20px 40px rgba(10, 22, 40, 0.15);
+  --shadow-premium: 0 25px 50px -12px rgba(10, 22, 40, 0.25);
+}
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  body {
+    @apply bg-darkNavy text-white font-sans antialiased;
+    scroll-behavior: smooth;
+    cursor: none;
+    /* Hide default cursor for custom cursor */
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-bold text-white;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    line-height: 1.7;
+  }
+}
+
+@layer components {
+
+  /* Clay.global-style Card Component */
+  .card {
+    @apply bg-cardBg rounded-2xl p-8;
+    box-shadow: var(--shadow-card);
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-4px);
+  }
+
+  .card-lg {
+    @apply rounded-3xl p-12;
+  }
+
+  /* Premium Container */
+  .container-premium {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section Spacing */
+  .section-padding {
+    @apply py-24 lg:py-32;
+  }
+
+  /* Grid Layouts */
+  .grid-cards {
+    @apply grid gap-8;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  }
+
+  .grid-2 {
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-8;
+  }
+
+  .grid-3 {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    @apply bg-gradient-to-r from-royalBlue to-mint bg-clip-text text-transparent;
+  }
+
+  .gradient-royal {
+    @apply bg-gradient-to-r from-royalBlue to-blue-400;
+  }
+
+  .gradient-mint {
+    @apply bg-gradient-to-r from-mint to-emerald-400;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+  }
+
+  .smooth-transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+
+  /* Text Hierarchy */
+  .text-display {
+    @apply text-5xl md:text-6xl lg:text-7xl font-bold leading-tight;
+  }
+
+  .text-heading {
+    @apply text-4xl md:text-5xl font-bold leading-tight;
+  }
+
+  .text-subheading {
+    @apply text-2xl md:text-3xl font-bold;
+  }
+
+  .text-body-lg {
+    @apply text-lg md:text-xl leading-relaxed;
+  }
+
+  /* Spacing Utilities */
+  .section-gap {
+    @apply space-y-24;
+  }
+}
+
+/* Smooth scrolling for supporting browsers */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: auto;
+    /* Let Lenis handle it */
+  }
+}
+
+/* Mobile cursor override */
+@media (max-width: 768px) {
+  body {
+    cursor: auto !important;
+  }
+}
